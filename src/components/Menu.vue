@@ -13,6 +13,15 @@
       <li>
         <router-link to="/naves">Naves</router-link>
       </li>
+      <li>
+        <router-link to="/pessoas">Pessoas</router-link>
+      </li>
+      <li>
+        <router-link to="/planetas">Planetas</router-link>
+      </li>
+      <li>
+        <router-link to="/especies">Espécies</router-link>
+      </li>
     </ul>
   </nav>
 </template>

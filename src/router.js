@@ -47,6 +47,70 @@ const routes = [
     component: () => import('@/views/Veiculo.vue'),
   },
   {
+    path: '/naves',
+    name: 'Naves',
+    meta: {
+      title: `${prefixTitle} Naves`,
+    },
+    component: () => import('@/views/Naves.vue'),
+  },
+  {
+    path: '/nave/:id',
+    name: 'Nave',
+    meta: {
+      title: `${prefixTitle} Nave`,
+    },
+    component: () => import('@/views/Nave.vue'),
+  },
+  {
+    path: '/pessoas',
+    name: 'Pessoas',
+    meta: {
+      title: `${prefixTitle} Pessoas`,
+    },
+    component: () => import('@/views/Pessoas.vue'),
+  },
+  {
+    path: '/pessoa/:id',
+    name: 'Pessoa',
+    meta: {
+      title: `${prefixTitle} Pessoa`,
+    },
+    component: () => import('@/views/Pessoa.vue'),
+  },
+  {
+    path: '/planetas',
+    name: 'Planetas',
+    meta: {
+      title: `${prefixTitle} Planetas`,
+    },
+    component: () => import('@/views/Planetas.vue'),
+  },
+  {
+    path: '/planeta/:id',
+    name: 'Planeta',
+    meta: {
+      title: `${prefixTitle} Planeta`,
+    },
+    component: () => import('@/views/Planeta.vue'),
+  },
+  {
+    path: '/especies',
+    name: 'Espécies',
+    meta: {
+      title: `${prefixTitle} Espécies`,
+    },
+    component: () => import('@/views/Especies.vue'),
+  },
+  {
+    path: '/especie/:id',
+    name: 'Espécie',
+    meta: {
+      title: `${prefixTitle} Espécie`,
+    },
+    component: () => import('@/views/Especie.vue'),
+  },
+  {
     path: '*',
     component: () => import('@/views/404.vue'),
   },

@@ -7,10 +7,11 @@
         />
       </div>
       <div v-else>
-        <h1>{{ veiculo.name || "" }}</h1>
-        <span>modelo: {{ veiculo.model || "" }}</span>
-        <span>Tripulantes: {{ veiculo.crew || "" }}</span>
-        <span>Custo em créditos: {{ veiculo.cost_in_credits || "" }}</span>
+        <h1>{{ pessoa.name || "" }}</h1>
+        <span>Nascimento: {{ pessoa.birth_year || "" }}</span>
+        <span>Altura: {{ pessoa.height || "" }}</span>
+        <span>Massa: {{ pessoa.mass || "" }}</span>
+        <span>Gênero: {{ pessoa.gender || "" }}</span>
       </div>
     </div>
     <button class="back" @click="$router.go(-1)">voltar</button>
@@ -22,26 +23,26 @@ export default {
   data() {
     return {
       isLoading: true,
-      veiculo: {},
+      pessoa: {},
     };
   },
   methods: {
-    getVehicle(id = this.$route.params.id) {
-      this.$http.get(`vehicles/${id}/`)
+    getPeople(id = this.$route.params.id) {
+      this.$http.get(`people/${id}/`)
         .then((response) => {
-          this.veiculo = response.data;
           this.isLoading = false;
+          this.pessoa = response.data;
         })
         .catch((error) => console.error(error));
     },
   },
   created() {
-    this.getVehicle();
+    this.getPeople();
   },
   activated() {
+    this.pessoa = {};
     this.isLoading = true;
-    this.veiculo = {};
-    this.getVehicle();
+    this.getPeople();
   },
 };
 </script>

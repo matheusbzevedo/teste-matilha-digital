@@ -7,7 +7,7 @@
         />
       </div>
       <div v-else>
-        <h1>{{filme.title || ""}}</h1>
+        <h1>{{ filme.title || "" }}</h1>
         <blockquote>{{ filme. opening_crawl || "" }}</blockquote>
         <span>Produtor: {{ filme.producer || "" }}</span>
         <span>Diretor: {{ filme.director || "" }}</span>
@@ -33,8 +33,8 @@ export default {
     };
   },
   methods: {
-    getFilm() {
-      this.$http.get(`films/${this.$route.params.id}/`)
+    getFilm(id = this.$route.params.id) {
+      this.$http.get(`films/${id}/`)
         .then((response) => {
           this.filme = response.data;
           this.filme.release_date = moment(this.filme.release_date).format('L');

@@ -7,10 +7,11 @@
         />
       </div>
       <div v-else>
-        <h1>{{ veiculo.name || "" }}</h1>
-        <span>modelo: {{ veiculo.model || "" }}</span>
-        <span>Tripulantes: {{ veiculo.crew || "" }}</span>
-        <span>Custo em créditos: {{ veiculo.cost_in_credits || "" }}</span>
+        <h1>{{ planeta.name || "" }}</h1>
+        <span>População: {{ planeta.population || "" }}</span>
+        <span>Clima: {{ planeta.climate || "" }}</span>
+        <span>Gravidade: {{ planeta.gravity || "" }}</span>
+        <span>Terreno: {{ planeta.terrain || "" }}</span>
       </div>
     </div>
     <button class="back" @click="$router.go(-1)">voltar</button>
@@ -22,26 +23,26 @@ export default {
   data() {
     return {
       isLoading: true,
-      veiculo: {},
+      planeta: {},
     };
   },
   methods: {
-    getVehicle(id = this.$route.params.id) {
-      this.$http.get(`vehicles/${id}/`)
+    getPlanet(id = this.$route.params.id) {
+      this.$http.get(`planets/${id}/`)
         .then((response) => {
-          this.veiculo = response.data;
           this.isLoading = false;
+          this.planeta = response.data;
         })
         .catch((error) => console.error(error));
     },
   },
   created() {
-    this.getVehicle();
+    this.getPlanet();
   },
   activated() {
+    this.planeta = {};
     this.isLoading = true;
-    this.veiculo = {};
-    this.getVehicle();
+    this.getPlanet();
   },
 };
 </script>

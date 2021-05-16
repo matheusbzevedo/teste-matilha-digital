@@ -7,10 +7,10 @@
         />
       </div>
       <div v-else>
-        <h1>{{ veiculo.name || "" }}</h1>
-        <span>modelo: {{ veiculo.model || "" }}</span>
-        <span>Tripulantes: {{ veiculo.crew || "" }}</span>
-        <span>Custo em créditos: {{ veiculo.cost_in_credits || "" }}</span>
+        <h1>{{ nave.name || "" }}</h1>
+        <span>modelo: {{ nave.model || "" }}</span>
+        <span>Tripulantes: {{ nave.crew || "" }}</span>
+        <span>Custo em créditos: {{ nave.cost_in_credits || "" }}</span>
       </div>
     </div>
     <button class="back" @click="$router.go(-1)">voltar</button>
@@ -22,26 +22,26 @@ export default {
   data() {
     return {
       isLoading: true,
-      veiculo: {},
+      nave: {},
     };
   },
   methods: {
-    getVehicle(id = this.$route.params.id) {
-      this.$http.get(`vehicles/${id}/`)
+    getStarship(id = this.$route.params.id) {
+      this.$http.get(`/starships/${id}/`)
         .then((response) => {
-          this.veiculo = response.data;
+          this.nave = response.data;
           this.isLoading = false;
         })
         .catch((error) => console.error(error));
     },
   },
   created() {
-    this.getVehicle();
+    this.getStarship();
   },
   activated() {
+    this.nave = {};
     this.isLoading = true;
-    this.veiculo = {};
-    this.getVehicle();
+    this.getStarship();
   },
 };
 </script>
